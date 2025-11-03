@@ -1,68 +1,157 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@import "tailwindcss";
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@theme {
+  /* Fixed: Added semicolons and proper syntax */
+  --color-lws-green: #00d991;
+  --color-deep-dark: #17181c;
+  --color-medium-dark: #1e1f24;
+  --color-lighter-dark: #27292f;
+  
+  /* Fixed: Removed quotes from font family */
+  --font-family-inter: Inter, sans-serif;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
+/* Tailwind v4 uses @utility instead of @layer */
+@utility flex-center {
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
+@utility btn-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.375rem;
+  background-color: var(--color-lighter-dark);
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  font-size: 0.875rem;
   font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  color: white;
+  
+  &:hover {
+    background-color: var(--color-deep-dark);
+  }
+  
+  @media (min-width: 1024px) {
+    font-size: 1.125rem;
+  }
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@utility icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  background-color: var(--color-lighter-dark);
+  padding: 0.375rem;
+  font-weight: 500;
+  color: white;
+  
+  &:hover {
+    background-color: var(--color-deep-dark);
   }
-  a:hover {
-    color: #747bff;
+}
+
+@utility card {
+  border-radius: 0.375rem;
+  border: 1px solid #3f3f3f;
+  background-color: var(--color-medium-dark);
+  padding: 1rem;
+  
+  @media (min-width: 1024px) {
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    padding-top: 1.25rem;
+    padding-bottom: 1.25rem;
   }
-  button {
-    background-color: #f9f9f9;
+}
+
+@utility form-control {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+@utility auth-label {
+  line-height: 1.38;
+  
+  @media (min-width: 1024px) {
+    font-size: 1.125rem;
   }
+}
+
+@utility auth-input {
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid rgb(204 204 204 / 0.14);
+  background-color: var(--color-lighter-dark);
+  padding: 0.375rem;
+  
+  &:focus {
+    outline: none;
+  }
+  
+  @media (min-width: 1024px) {
+    padding: 0.75rem;
+  }
+}
+
+@utility post-avater {
+  max-width: 2.5rem;
+  max-height: 2.5rem;
+  border-radius: 9999px;
+  
+  @media (min-width: 1024px) {
+    max-height: 58px;
+    max-width: 58px;
+  }
+}
+
+/* Action Modal */
+@utility action-modal-container {
+  border-radius: 0.375rem;
+  border: 1px solid #3f3f3f;
+  background-color: var(--color-medium-dark);
+  position: absolute;
+  right: 100%;
+  top: 1.5rem;
+  min-width: 200px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  
+  & > button {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #3f3f3f;
+  }
+  
+  & > button:last-child {
+    border-bottom: none;
+  }
+}
+
+@utility action-menu-item {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.5rem;
+  color: rgb(243 244 246);
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Base styles */
+body {
+  background-color: var(--color-deep-dark);
+  font-family: var(--font-family-inter);
+  color: rgb(243 244 246);
 }
