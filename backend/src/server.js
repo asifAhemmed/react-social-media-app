@@ -1,0 +1,26 @@
+import express from "express";
+import dotenv from "dotenv";
+import authRoute from "./routes/auth.route.js";
+import messageRoute from "./routes/message.route.js";
+
+dotenv.config();
+
+const PORT = process.env.PORT || 3000;
+
+const app  = express();
+
+
+app.use("/api/auth", authRoute);
+app.use("/api/messages", messageRoute);
+
+
+
+
+app.get("/", (req, res) => {
+    res.send("Hello World");
+})
+
+
+app.listen(3000, () => {
+    console.log(`Server is running on port ${PORT}`);
+});
