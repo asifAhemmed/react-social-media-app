@@ -6,8 +6,10 @@ import Avatar from '../../assets/images/avatars/avatar_1.png';
 import Logout from '../auth/Logout';
 
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../hooks/useAuth';
 
 const Header = () => {
+  const { auth } = useAuth();
   return (
     <nav className="sticky top-0 z-50 border-b border-[#3F3F3F] bg-[#1E1F24] py-4">
     <div className="container flex flex-col items-center justify-between gap-6 sm:flex-row">
@@ -32,7 +34,7 @@ const Header = () => {
         <Link
           to="/me"
           className="flex-center ml-8! gap-3">
-          <span className="text-lg font-medium lg:text-xl">Sumit</span>
+          <span className="text-lg font-medium lg:text-xl">{auth?.user?.firstName}</span>
           <img className="max-h-8 max-w-8 lg:max-h-11 lg:max-w-11"
             src={Avatar} alt="avatar" />
         </Link>
